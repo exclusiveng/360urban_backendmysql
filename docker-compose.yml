@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: 360urban_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: 360urban_db
+      MYSQL_USER: 360urban
+      MYSQL_PASSWORD: 360urban_password
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - 360urban_network
+
+volumes:
+  mysql_data:
+
+networks:
+  360urban_network:
+    driver: bridge
