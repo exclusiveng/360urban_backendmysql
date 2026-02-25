@@ -5,7 +5,7 @@ import {
   updateInquiryStatus,
   deleteInquiry,
 } from '../controllers/inquiryController.js';
-import { authenticate, authorize } from '../middlewares/auth.js';
+import { authenticate } from '../middlewares/auth.js';
 
 const router = Router();
 

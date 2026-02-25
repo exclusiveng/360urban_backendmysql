@@ -19,7 +19,7 @@ ensureUploadDirs();
 
 // Storage configuration
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (req, _file, cb) => {
     let uploadPath = 'uploads/';
 
     // Determine subdirectory based on route or field
@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
 
     cb(null, uploadPath);
   },
-  filename: (req, file, cb) => {
+  filename: (_req, file, cb) => {
     // Generate unique filename: timestamp-random-originalName
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
@@ -42,7 +42,7 @@ const storage = multer.diskStorage({
 });
 
 // File filter (images only)
-const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+const fileFilter = (_req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
   if (file.mimetype.startsWith('image/')) {
     cb(null, true);
   } else {

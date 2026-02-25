@@ -6,7 +6,7 @@ import { PropertyCategory, PropertyType, PropertyStatus } from '../entities/Prop
 const propertyService = new PropertyService();
 
 export const createProperty = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     if (!req.user) {
       return res.status(401).json({
         success: false,
@@ -54,7 +54,7 @@ export const createProperty = asyncHandler(
       req.user.id
     );
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: 'Property created successfully',
       data: property,
@@ -63,7 +63,7 @@ export const createProperty = asyncHandler(
 );
 
 export const getProperties = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const filters = {
       page: req.query.page ? parseInt(req.query.page as string) : 1,
       limit: req.query.limit ? parseInt(req.query.limit as string) : 20,
@@ -83,7 +83,7 @@ export const getProperties = asyncHandler(
 
     const result = await propertyService.getProperties(filters);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Properties retrieved successfully',
       data: result,
@@ -92,12 +92,12 @@ export const getProperties = asyncHandler(
 );
 
 export const getPropertyBySlug = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { slug } = req.params;
 
     const property = await propertyService.getPropertyBySlug(slug as string);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Property retrieved successfully',
       data: property,
@@ -106,12 +106,12 @@ export const getPropertyBySlug = asyncHandler(
 );
 
 export const getPropertyById = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { id } = req.params;
 
     const property = await propertyService.getPropertyById(id as string);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Property retrieved successfully',
       data: property,
@@ -120,7 +120,7 @@ export const getPropertyById = asyncHandler(
 );
 
 export const updateProperty = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     if (!req.user) {
       return res.status(401).json({
         success: false,
@@ -156,7 +156,7 @@ export const updateProperty = asyncHandler(
 
     const property = await propertyService.updateProperty(id as string, req.user.id, updateData);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Property updated successfully',
       data: property,
@@ -165,7 +165,7 @@ export const updateProperty = asyncHandler(
 );
 
 export const deleteProperty = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     if (!req.user) {
       return res.status(401).json({
         success: false,
@@ -176,7 +176,7 @@ export const deleteProperty = asyncHandler(
     const { id } = req.params;
     await propertyService.deleteProperty(id as string, req.user.id);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Property deleted successfully',
     });
@@ -184,11 +184,11 @@ export const deleteProperty = asyncHandler(
 );
 
 export const getFeaturedProperties = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const limit = req.query.limit ? parseInt(req.query.limit as string) : 6;
     const properties = await propertyService.getFeaturedProperties(limit);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Featured properties retrieved successfully',
       data: properties,

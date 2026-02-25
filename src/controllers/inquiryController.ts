@@ -6,7 +6,7 @@ import { InquiryStatus } from '../entities/ContactInquiry.js';
 const inquiryService = new ContactInquiryService();
 
 export const createInquiry = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { propertyId, email, phone, message } = req.body;
 
     if (!propertyId || !email || !phone || !message) {
@@ -24,7 +24,7 @@ export const createInquiry = asyncHandler(
       userId: req.user?.id,
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: 'Inquiry created successfully',
       data: inquiry,
@@ -33,7 +33,7 @@ export const createInquiry = asyncHandler(
 );
 
 export const getInquiries = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const filters = {
       page: req.query.page ? parseInt(req.query.page as string) : 1,
       limit: req.query.limit ? parseInt(req.query.limit as string) : 20,
@@ -47,7 +47,7 @@ export const getInquiries = asyncHandler(
 
     const result = await inquiryService.getInquiries(filters);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Inquiries retrieved successfully',
       data: result,
@@ -56,7 +56,7 @@ export const getInquiries = asyncHandler(
 );
 
 export const updateInquiryStatus = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { inquiryId } = req.params;
     const { status } = req.body;
 
@@ -69,7 +69,7 @@ export const updateInquiryStatus = asyncHandler(
 
     const inquiry = await inquiryService.updateInquiryStatus(inquiryId as string, status);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Inquiry status updated successfully',
       data: inquiry,
@@ -78,12 +78,12 @@ export const updateInquiryStatus = asyncHandler(
 );
 
 export const deleteInquiry = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { inquiryId } = req.params;
 
     await inquiryService.deleteInquiry(inquiryId as string);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Inquiry deleted successfully',
     });

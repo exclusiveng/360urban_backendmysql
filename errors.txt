@@ -1,0 +1,44 @@
+src/controllers/authController.ts(8,3): error TS7030: Not all code paths return a value.
+src/controllers/authController.ts(8,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/authController.ts(36,3): error TS7030: Not all code paths return a value.
+src/controllers/authController.ts(36,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/authController.ts(57,3): error TS7030: Not all code paths return a value.
+src/controllers/authController.ts(57,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/authController.ts(78,3): error TS7030: Not all code paths return a value.
+src/controllers/authController.ts(78,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/authController.ts(96,3): error TS7030: Not all code paths return a value.
+src/controllers/authController.ts(96,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/favoriteController.ts(8,3): error TS7030: Not all code paths return a value.
+src/controllers/favoriteController.ts(8,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/favoriteController.ts(29,3): error TS7030: Not all code paths return a value.
+src/controllers/favoriteController.ts(29,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/favoriteController.ts(49,3): error TS7030: Not all code paths return a value.
+src/controllers/favoriteController.ts(49,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/favoriteController.ts(71,3): error TS7030: Not all code paths return a value.
+src/controllers/favoriteController.ts(71,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/inquiryController.ts(9,3): error TS7030: Not all code paths return a value.
+src/controllers/inquiryController.ts(9,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/inquiryController.ts(36,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/inquiryController.ts(59,3): error TS7030: Not all code paths return a value.
+src/controllers/inquiryController.ts(59,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/inquiryController.ts(81,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/propertyController.ts(9,3): error TS7030: Not all code paths return a value.
+src/controllers/propertyController.ts(9,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/propertyController.ts(66,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/propertyController.ts(95,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/propertyController.ts(109,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/propertyController.ts(123,3): error TS7030: Not all code paths return a value.
+src/controllers/propertyController.ts(123,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/propertyController.ts(168,3): error TS7030: Not all code paths return a value.
+src/controllers/propertyController.ts(168,39): error TS6133: 'next' is declared but its value is never read.
+src/controllers/propertyController.ts(187,39): error TS6133: 'next' is declared but its value is never read.
+src/main.ts(34,34): error TS1343: The 'import.meta' meta-property is only allowed when the '--module' option is 'es2020', 'es2022', 'esnext', 'system', 'node16', 'node18', 'node20', or 'nodenext'.
+src/main.ts(35,7): error TS6133: '__dirname' is declared but its value is never read.
+src/main.ts(57,21): error TS6133: 'req' is declared but its value is never read.
+src/middlewares/auth.ts(16,3): error TS6133: 'res' is declared but its value is never read.
+src/middlewares/auth.ts(45,25): error TS6133: 'res' is declared but its value is never read.
+src/middlewares/errorHandler.ts(6,3): error TS6133: 'req' is declared but its value is never read.
+src/middlewares/errorHandler.ts(8,3): error TS6133: 'next' is declared but its value is never read.
+src/middlewares/errorHandler.ts(30,3): error TS6133: 'next' is declared but its value is never read.
+src/routes/inquiryRoutes.ts(8,24): error TS6133: 'authorize' is declared but its value is never read.
+src/routes/propertyRoutes.ts(11,24): error TS6133: 'authorize' is declared but its value is never read.

@@ -8,7 +8,7 @@ import {
   deleteProperty,
   getFeaturedProperties,
 } from '../controllers/propertyController.js';
-import { authenticate, authorize } from '../middlewares/auth.js';
+import { authenticate } from '../middlewares/auth.js';
 
 const router = Router();
 

@@ -29,13 +29,8 @@ app.use(
 );
 
 // Serve static files (uploads)
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-// Go up two levels from dist/src/main.js to root, then to uploads
-// const rootDir = path.join(__dirname, '../../');
 // Better approach: use process.cwd() which typically points to the project root
+import path from 'path';
 const rootDir = process.cwd();
 app.use('/uploads', express.static(path.join(rootDir, 'uploads')));
 
@@ -54,7 +49,7 @@ app.use('/api/favorites', favoriteRoutes);
 app.use('/api/inquiries', inquiryRoutes);
 
 // Health check
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 

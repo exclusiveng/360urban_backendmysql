@@ -5,7 +5,7 @@ import { asyncHandler } from '../utils/errors.js';
 const authService = new AuthService();
 
 export const register = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { email, password, firstName, lastName, phone } = req.body;
 
     // Basic validation
@@ -24,7 +24,7 @@ export const register = asyncHandler(
       phone
     );
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: 'User registered successfully',
       data: result,
@@ -33,7 +33,7 @@ export const register = asyncHandler(
 );
 
 export const login = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -45,7 +45,7 @@ export const login = asyncHandler(
 
     const result = await authService.login(email, password);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Login successful',
       data: result,
@@ -54,7 +54,7 @@ export const login = asyncHandler(
 );
 
 export const refreshToken = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { refreshToken } = req.body;
 
     if (!refreshToken) {
@@ -66,7 +66,7 @@ export const refreshToken = asyncHandler(
 
     const result = await authService.refreshAccessToken(refreshToken);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Token refreshed successfully',
       data: result,
@@ -75,7 +75,7 @@ export const refreshToken = asyncHandler(
 );
 
 export const logout = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     if (!req.user) {
       return res.status(401).json({
         success: false,
@@ -85,7 +85,7 @@ export const logout = asyncHandler(
 
     await authService.logout(req.user.id);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Logged out successfully',
     });
@@ -93,7 +93,7 @@ export const logout = asyncHandler(
 );
 
 export const changePassword = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     if (!req.user) {
       return res.status(401).json({
         success: false,
@@ -112,7 +112,7 @@ export const changePassword = asyncHandler(
 
     await authService.changePassword(req.user.id, oldPassword, newPassword);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Password changed successfully',
     });

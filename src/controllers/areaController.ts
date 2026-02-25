@@ -4,7 +4,7 @@ import { asyncHandler } from '../utils/errors.js';
 
 const areaService = new AreaService();
 
-export const getAllAreas = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+export const getAllAreas = asyncHandler(async (_req: Request, res: Response, _next: NextFunction) => {
   const areas = await areaService.getAllAreas();
 
   res.status(200).json({
@@ -15,7 +15,7 @@ export const getAllAreas = asyncHandler(async (req: Request, res: Response, next
 });
 
 export const getAreaBySlug = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, _next: NextFunction) => {
     const { slug } = req.params;
 
     const area = await areaService.getAreaBySlug(slug as string);
@@ -28,7 +28,7 @@ export const getAreaBySlug = asyncHandler(
   }
 );
 
-export const getAreaById = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+export const getAreaById = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const { id } = req.params;
 
   const area = await areaService.getAreaById(id as string);
@@ -40,7 +40,7 @@ export const getAreaById = asyncHandler(async (req: Request, res: Response, next
   });
 });
 
-export const createArea = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+export const createArea = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const { name, description, image } = req.body;
 
   // Validate required field
@@ -70,7 +70,7 @@ export const createArea = asyncHandler(async (req: Request, res: Response, next:
   });
 });
 
-export const updateArea = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+export const updateArea = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const { id } = req.params;
   const { name, description, image, existingImages } = req.body;
 
