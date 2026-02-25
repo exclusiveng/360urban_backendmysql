@@ -19,6 +19,7 @@ export const AppDataSource = new DataSource({
         username: process.env.DB_USERNAME || 'root',
         password: process.env.DB_PASSWORD || '',
         database: process.env.DB_NAME || '360urban_db',
+        connectTimeout: 30000,
       }),
   synchronize: process.env.NODE_ENV === 'development',
   logging: process.env.NODE_ENV === 'development',
