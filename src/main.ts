@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import 'reflect-metadata';
 import express, {Request, Response} from 'express';
 import helmet from 'helmet';
@@ -11,7 +12,7 @@ import propertyRoutes from './routes/propertyRoutes.js';
 import areaRoutes from './routes/areaRoutes.js';
 import favoriteRoutes from './routes/favoriteRoutes.js';
 import inquiryRoutes from './routes/inquiryRoutes.js';
-
+import path from 'path';
 
 const app = express();
 
@@ -29,8 +30,6 @@ app.use(
 );
 
 // Serve static files (uploads)
-// Better approach: use process.cwd() which typically points to the project root
-import path from 'path';
 const rootDir = process.cwd();
 app.use('/uploads', express.static(path.join(rootDir, 'uploads')));
 

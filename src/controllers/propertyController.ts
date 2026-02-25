@@ -26,7 +26,7 @@ export const createProperty = asyncHandler(
     // Process uploaded images
     let imageUrls: string[] = [];
     if (req.files && Array.isArray(req.files)) {
-      imageUrls = (req.files as Express.Multer.File[]).map(
+      imageUrls = (req.files as any[]).map(
         (file) => `${req.protocol}://${req.get('host')}/uploads/properties/${file.filename}`
       );
     } else if (req.body.images && Array.isArray(req.body.images)) {
@@ -134,7 +134,7 @@ export const updateProperty = asyncHandler(
     let updateData = { ...req.body };
     
     if (req.files && Array.isArray(req.files) && req.files.length > 0) {
-       const newImageUrls = (req.files as Express.Multer.File[]).map(
+       const newImageUrls = (req.files as any[]).map(
         (file) => `${req.protocol}://${req.get('host')}/uploads/properties/${file.filename}`
       );
       // Determine how to handle existing images. For now, let's assume if new files are uploaded, 

@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs-extra';
@@ -42,7 +43,7 @@ const storage = multer.diskStorage({
 });
 
 // File filter (images only)
-const fileFilter = (_req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+const fileFilter = (_req: Request, file: any, cb: any) => {
   if (file.mimetype.startsWith('image/')) {
     cb(null, true);
   } else {
@@ -53,7 +54,7 @@ const fileFilter = (_req: Request, file: Express.Multer.File, cb: multer.FileFil
 // Export upload middleware
 export const upload = multer({
   storage,
-  fileFilter,
+  fileFilter: fileFilter as any,
   limits: {
     fileSize: 10 * 1024 * 1024, // 10MB limit
   },

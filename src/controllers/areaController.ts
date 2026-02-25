@@ -51,7 +51,7 @@ export const createArea = asyncHandler(async (req: Request, res: Response, _next
   // Process uploaded images
   let imageUrls: string[] = [];
   if (req.files && Array.isArray(req.files)) {
-    imageUrls = (req.files as Express.Multer.File[]).map(
+    imageUrls = (req.files as any[]).map(
       (file) => `${req.protocol}://${req.get('host')}/uploads/areas/${file.filename}`
     );
   }
@@ -77,7 +77,7 @@ export const updateArea = asyncHandler(async (req: Request, res: Response, _next
   // Process uploaded images
   let newImageUrls: string[] = [];
   if (req.files && Array.isArray(req.files)) {
-    newImageUrls = (req.files as Express.Multer.File[]).map(
+    newImageUrls = (req.files as any[]).map(
       (file) => `${req.protocol}://${req.get('host')}/uploads/areas/${file.filename}`
     );
   }
