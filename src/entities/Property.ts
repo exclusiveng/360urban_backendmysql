@@ -116,14 +116,14 @@ export class Property {
   updatedAt: Date;
 
   // Relations
-  @ManyToOne(() => User, (user) => user.properties, { eager: true })
+  @ManyToOne(() => User, (user) => user.properties)
   @JoinColumn({ name: 'ownerId' })
   owner: User;
 
   @Column('uuid')
   ownerId: string;
 
-  @ManyToOne(() => Area, { eager: true })
+  @ManyToOne(() => Area)
   @JoinColumn({ name: 'areaId' })
   area: Area;
 
