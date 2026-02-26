@@ -22,7 +22,6 @@ export class Favorite {
   // Relations
   @ManyToOne(() => User, (user) => user.favorites, {
     onDelete: 'CASCADE',
-    eager: true,
   })
   @JoinColumn({ name: 'userId' })
   user: User;
@@ -32,7 +31,6 @@ export class Favorite {
 
   @ManyToOne(() => Property, (property) => property.favorites, {
     onDelete: 'CASCADE',
-    eager: true,
   })
   @JoinColumn({ name: 'propertyId' })
   property: Property;
