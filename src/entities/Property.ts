@@ -130,7 +130,7 @@ export class Property {
   @Column('uuid')
   areaId: string;
 
-  @OneToMany(() => PropertyImage, (image) => image.property, { eager: true })
+  @OneToMany(() => PropertyImage, (image) => image.property)
   images: PropertyImage[];
 
   @OneToMany(() => Favorite, (favorite) => favorite.property)
